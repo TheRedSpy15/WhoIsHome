@@ -1,7 +1,16 @@
 # WhoIsHome
 A system designed as a learning project to monitor who is home based off a live camera feed from security camera.
 
+**TODO:**
+- [x] OpenCV
+- [ ] Cascade classifiers
+- [x] MySQL database
+- [ ] Web server
+- [ ] Restful API
+- [ ] Mobile app
+
 ### About the project
+
 **SUBJECT TO CHANGE!**
 
 WhoIsHome (WIH) is a multi-program project. It has serveral parts to it. The first part is a Python script
@@ -17,3 +26,6 @@ is planned. But an IOS version is foreseeable. This has many possibilities. From
 
 Finally, I will be creating a bash script for a quick means of setting up the server on other systems for those who want
 to have their own WIH setup.
+
+**WIH Flow:**
+Camera -> OpenCV server (Python) -> Web server (Go) -> Mobile app (Java)
