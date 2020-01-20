@@ -7,6 +7,7 @@ A system designed as a learning project to monitor who is home based off a live 
 - [x] MySQL database
 - [ ] Web server
 - [ ] Restful API
+- [ ] Installer script
 - [ ] Mobile app
 
 ### About the project
