@@ -2,7 +2,7 @@
 A system designed as a learning project to monitor who is home based off a live camera feed from security camera.
 
 **TODO:**
-- [x] OpenCV
+- [x] OpenCV script
 - [ ] Cascade classifiers
 - [x] MySQL database
 - [ ] Web server
