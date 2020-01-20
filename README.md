@@ -1,5 +1,5 @@
 # WhoIsHome
-A system designed as a learning project to monitor who is home based off a live camera feed from security camera.
+A system designed as a learning project to monitor who is home based off a live feed from a security camera.
 
 **TODO:**
 - [x] OpenCV script
