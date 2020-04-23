@@ -15,7 +15,7 @@ type Car struct {
 }
 
 func index(c echo.Context) error {
-	db, err := sql.Open("mysql", "hunter:HDrumm_17@tcp(127.0.0.1:3306)/testdatabase")
+	db, err := sql.Open("mysql", "hunter:HDrumm_17@tcp(127.0.0.1:3306)/testdatabase") // TODO: read csv
 	if err != nil {
 		panic(err.Error())
 	} else {
@@ -38,7 +38,7 @@ func index(c echo.Context) error {
 		if err != nil {
 			panic(err.Error()) // proper error handling instead of panic in your app
 		}
-		viewData += `<p style="width:20px;height:20px;">` + car.Name + `</p>`
+		viewData += `<p style="width:20px;height:20px;">` + car.Name + `</p>` // TODO: read from template file
 	}
 
 	return c.HTML(http.StatusOK, viewData)
