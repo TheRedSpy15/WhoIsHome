@@ -2,24 +2,25 @@ package main
 
 import (
 	"database/sql"
-	"fmt"
 	"net/http"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/labstack/echo/v4"
+
+	model "github.com/TheRedSpy15/WhoIsHome/models"
 )
 
 func index(c echo.Context) error {
 	// Database connection
 	db, err := sql.Open("mysql", "hunter:HDrumm_17@tcp(127.0.0.1:3306)/testdatabase") // TODO: read csv
 	if err != nil {
-		panic("MySQL: Failed to open database")
+		c.Logger().Panic("MySQL: Failed to open database")
 	} else {
-		fmt.Println("MySQL: Connection Established")
+		c.Logger().Debug("MySQL: Connection Established")
 	}
 	err = db.Ping()
 	if err != nil {
-		fmt.Println("MySQL: Database ping failed: \n" + err.Error())
+		c.Logger().Panic("MySQL: Database ping failed: " + err.Error() + "\n")
 	}
 
 	results, err := db.Query("SELECT * FROM cars")
@@ -28,10 +29,10 @@ func index(c echo.Context) error {
 	// Displaying data
 	var viewData string
 	for results.Next() {
-		var car Car
+		var car model.Car
 		err = results.Scan(&car.ID, &car.Name, &car.Present)
 		if err != nil {
-			fmt.Println("Failed to read data")
+			c.Logger().Error("Failed to read data")
 		}
 		viewData += `<p style="width:20px;height:20px;">` + car.Name + `</p>` // TODO: read from template file
 	}

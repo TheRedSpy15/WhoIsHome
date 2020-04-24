@@ -28,6 +28,7 @@ func main() {
 		return false, nil
 	}))
 	e.Use(middleware.BodyLimit("2M"))
+	e.Debug = true
 
 	// Routes
 	e.GET("/", index)
