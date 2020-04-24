@@ -20,7 +20,7 @@ func index(c echo.Context) error {
 	}
 	err = db.Ping()
 	if err != nil {
-		c.Logger().Panic("MySQL: Database ping failed: " + err.Error() + "\n")
+		c.Logger().Panic("MySQL: Database ping failed: " + err.Error())
 	}
 
 	results, err := db.Query("SELECT * FROM cars")
