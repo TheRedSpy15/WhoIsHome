@@ -2,20 +2,29 @@ package main
 
 import (
 	"crypto/subtle"
-	"database/sql"
+	"os"
 
+	"github.com/TheRedSpy15/WhoIsHome/controllers"
 	"github.com/TheRedSpy15/WhoIsHome/utils"
+	"github.com/akamensky/argparse"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
 
-var db *sql.DB
-var csv [4]string
-
 func main() {
+	parser := argparse.NewParser("WhoIsHome - Web Server", "Connects to MySQL database and securely serves the data")
+
+	// Create flags
+	d := parser.Flag("d", "Debug", &argparse.Options{Required: false, Help: "Enable debug mode"})
+
+	err := parser.Parse(os.Args) // parse arguments
+	if err != nil {
+		panic(err.Error())
+	}
+
 	e := echo.New()
-	csv = utils.ReadCsvFile("OpenCV/database.csv")
+	csv := utils.ReadCsvFile("OpenCV/database.csv")
 
 	// Middleware
 	e.Use(middleware.Logger())
@@ -31,10 +40,10 @@ func main() {
 		return false, nil
 	}))
 	e.Use(middleware.BodyLimit("2M"))
-	e.Debug = true
+	e.Debug = *d
 
 	// Routes
-	e.GET("/", index)
+	e.GET("/", controllers.Index)
 
 	e.Logger.Fatal(e.Start(":1323"))
 }

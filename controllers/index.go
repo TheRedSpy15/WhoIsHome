@@ -1,16 +1,18 @@
-package main
+package controllers
 
 import (
 	"database/sql"
 	"net/http"
 
-	_ "github.com/go-sql-driver/mysql"
-	"github.com/labstack/echo/v4"
-
 	model "github.com/TheRedSpy15/WhoIsHome/models"
+	"github.com/TheRedSpy15/WhoIsHome/utils"
+	"github.com/labstack/echo/v4"
 )
 
-func index(c echo.Context) error {
+// Index - connects to MySQL database and displays html showcasing data
+func Index(c echo.Context) error {
+	csv := utils.ReadCsvFile("OpenCV/database.csv")
+
 	// Database connection
 	connectionString := csv[2] + ":" + csv[3] + "@tcp(" + csv[0] + ":3306)/" + csv[1]
 	db, err := sql.Open("mysql", connectionString)
