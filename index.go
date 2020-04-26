@@ -12,7 +12,8 @@ import (
 
 func index(c echo.Context) error {
 	// Database connection
-	db, err := sql.Open("mysql", "hunter:HDrumm_17@tcp(127.0.0.1:3306)/testdatabase") // TODO: read csv
+	connectionString := csv[2] + ":" + csv[3] + "@tcp(" + csv[0] + ":3306)/" + csv[1]
+	db, err := sql.Open("mysql", connectionString)
 	if err != nil {
 		c.Logger().Panic("MySQL: Failed to open database")
 	} else {
