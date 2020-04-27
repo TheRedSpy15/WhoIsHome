@@ -9,6 +9,7 @@ A system designed as a learning project to monitor who is home based off a live 
 - [ ] Restful API
 - [ ] Installer script
 - [ ] Mobile app
+- [ ] Docker container
 
 ### About the project
 
