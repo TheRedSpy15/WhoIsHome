@@ -1,6 +1,8 @@
 # WhoIsHome
 A system designed as a learning project to monitor who is home based off a live feed from a security camera.
 
+Purpose: not much. Just for fun and learning.
+
 **TODO:**
 - [x] OpenCV script
 - [ ] Cascade classifiers
